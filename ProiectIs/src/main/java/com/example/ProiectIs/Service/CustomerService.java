@@ -8,9 +8,11 @@ public interface CustomerService {
     Customer findFirstById(Integer id);
 
     Customer findByEmail(String email);
-    public void insert(Customer customer);
+    public String insert(Customer customer);
 
     public void delete(Customer customer);
+
+    public Customer login(Customer credentials);
 
     public void deleteById(Integer id);
 }

@@ -5,7 +5,7 @@ import { ButtonStyle, additionalContent, backgroundContainer, buttonStyleText, f
 import { Button } from '@mui/material';
 import { useLocation, useNavigate } from "react-router-dom";
 
-const HomePage = () => {
+const AdminHome = () => {
 
   const navigate = useNavigate();
 
@@ -24,7 +24,11 @@ const HomePage = () => {
 
   const rentConsole = (event: any): void => {
     navigate("/RentConsole", { state: { key: id } })
-}
+  }
+
+  const manageCustomer = (event: any): void => {
+    navigate("/ManageCustomer", { state: { key: id } })
+  }
 
   return (
     <div style={backgroundContainer}>
@@ -39,9 +43,12 @@ const HomePage = () => {
         <Button style={buttonStyleText} onClick={barMenu} variant="contained">
             Bar Menu
         </Button>
+        <Button style={buttonStyleText} onClick={manageCustomer} variant="contained">
+            Manage Customer
+        </Button>
         </div>
     </div>
   );
 };
 
-export default HomePage;
+export default AdminHome;

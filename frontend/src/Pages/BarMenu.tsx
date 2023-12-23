@@ -1,7 +1,12 @@
 import React from 'react';
 import { backgroundContainer } from './BarMenu.styles';
+import { useLocation } from 'react-router-dom';
 
 const BarMenu = () => {
+
+  const location = useLocation();
+  const id = parseInt(location.state?.key, 10);
+  console.log(id);
 
   return (
     <div>

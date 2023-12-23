@@ -30,13 +30,13 @@ export const medievalType: CSSProperties = {
 };
 
 export const ButtonStyle: React.CSSProperties = {
-  paddingTop: 25,
+  //paddingTop: 5,
   display: 'flex',
-  flexDirection: 'column', 
+  flexDirection: 'column',
   alignItems: 'center',
   justifyContent: 'center',
-  gap: '50px', 
-  marginTop: '20px', 
+  gap: '15px', 
+  //marginTop: '5px',
 };
 
 export const buttonStyleText: React.CSSProperties = {

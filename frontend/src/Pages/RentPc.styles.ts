@@ -23,7 +23,36 @@ export const backgroundContainer: CSSProperties = {
     color: 'white',
     fontSize: 50,
     position: 'absolute',
-    top: '50%', left: '50%',
+    left: '10%',
     transform: 'translate(-50%, -50%)',
     cursor: 'pointer',
   }
+
+  export const queueIcon2: CSSProperties = {
+    color: 'white',
+    fontSize: 50,
+    position: 'absolute',
+    left: '20%',
+    transform: 'translate(-50%, -50%)',
+    cursor: 'pointer',
+  }
+
+  export const queueIcon3: CSSProperties = {
+    color: 'white',
+    fontSize: 50,
+    position: 'absolute',
+    left: '80%',
+    transform: 'translate(-50%, -50%)',
+    cursor: 'pointer',
+  }
+
+  export const queueIcon4: CSSProperties = {
+    color: 'white',
+    fontSize: 50,
+    position: 'absolute',
+    left: '90%',
+    transform: 'translate(-50%, -50%)',
+    cursor: 'pointer',
+  }
+
+  

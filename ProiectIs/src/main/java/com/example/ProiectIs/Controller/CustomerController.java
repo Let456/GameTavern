@@ -26,17 +26,14 @@ public class CustomerController {
     @PostMapping("/Login")
     public ResponseEntity<Object> login(@RequestBody Customer credentials) {
 
-        Customer customer = customerServiceImplementation.findByEmail(credentials.getEmail());
+        Customer customer = customerServiceImplementation.login(credentials);
 
         if (customer == null) {
-            return ResponseEntity.badRequest().body("Invalid credentials");
+           return ResponseEntity.badRequest().body("Invalid Credentials");
         }
-
-        if (!customer.getPassword().equals(credentials.getPassword())) {
-            return ResponseEntity.badRequest().body("Invalid credentials");
+        else {
+            return ResponseEntity.ok(customer);
         }
-
-        return ResponseEntity.ok(customer);
     }
 
 //    @PostMapping("GetCustomerByEmail")
@@ -63,20 +60,14 @@ public class CustomerController {
     @PostMapping("/Insert")
     public ResponseEntity<String> insert(@RequestBody Customer customer)
     {
-        if(customer.getEmail().isEmpty() || customer.getCustomerName().isEmpty()
-                || customer.getAge() == null || customer.getPassword().isEmpty())
+        String string = customerServiceImplementation.insert(customer);
+        if(string.equals("Account Created"))
         {
-            return ResponseEntity.badRequest().body("All fields are required");
-        }
-        else if(!(customer.getEmail().matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")))
-        {
-            return ResponseEntity.badRequest().body("Invalid email address");
+            return ResponseEntity.ok(string);
         }
         else
         {
-            customerServiceImplementation.insert(customer);
-            System.out.println(customer);
-            return ResponseEntity.ok("Account Created");
+            return ResponseEntity.badRequest().body(string);
         }
     }
 }

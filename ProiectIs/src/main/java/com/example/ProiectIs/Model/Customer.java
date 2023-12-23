@@ -19,6 +19,8 @@ public class Customer {
     private Integer age;
     private String password;
     private String email;
+
+    private Integer admin;
     @OneToMany
     private List<BarOrder> barOrderList;
     @OneToMany

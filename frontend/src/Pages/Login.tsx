@@ -17,7 +17,10 @@ export const Login = (): JSX.Element => {
       axios.post('http://localhost:8060/Customer/Login', credentials, {headers: {"Content-Type": "application/json"
           }}).then(response => {
               console.log(response.data);
-              navigate("/Home", { state:{key:response.data.id}}) 
+              if(response.data.admin == 1)
+                navigate("/AdminHome", { state:{key:response.data.id}})
+              else
+                navigate("/Home", { state:{key:response.data.id}})
           })
           .catch(error => {
               console.error(error.response.data);
