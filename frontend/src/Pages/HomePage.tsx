@@ -24,7 +24,11 @@ const HomePage = () => {
 
   const rentConsole = (event: any): void => {
     navigate("/RentConsole", { state: { key: id } })
-}
+  }
+
+  const SeeOrders = (event: any): void => {
+    navigate("/SeeOrders", { state: { key: id } })
+  }
 
   return (
     <div style={backgroundContainer}>
@@ -38,6 +42,9 @@ const HomePage = () => {
         </Button>
         <Button style={buttonStyleText} onClick={barMenu} variant="contained">
             Bar Menu
+        </Button>
+        <Button style={buttonStyleText} onClick={SeeOrders} variant="contained">
+            See Orders
         </Button>
         </div>
     </div>

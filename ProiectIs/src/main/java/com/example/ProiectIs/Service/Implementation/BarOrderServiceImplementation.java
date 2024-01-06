@@ -23,6 +23,11 @@ public class BarOrderServiceImplementation implements BarOrderService {
     }
 
     @Override
+    public void update(BarOrder barOrder) {
+        barOrderRepository.save(barOrder);
+    }
+
+    @Override
     public void delete(BarOrder order) {
         barOrderRepository.delete(order);
     }

@@ -1,13 +1,16 @@
 package com.example.ProiectIs.Controller;
 
-import com.example.ProiectIs.DTO.ObiectNou;
+import com.example.ProiectIs.DTO.BarOrderCustomer;
+import com.example.ProiectIs.DTO.ConsoleCustomer;
+import com.example.ProiectIs.DTO.CustomerItem;
 import com.example.ProiectIs.Model.Customer;
 import com.example.ProiectIs.Service.Implementation.CustomerServiceImplementation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
@@ -36,25 +39,53 @@ public class CustomerController {
         }
     }
 
-//    @PostMapping("GetCustomerByEmail")
-//    public Customer getCustomerByEmail(@RequestBody Customer credentials)
-//    {
-//
-//    }
+    @GetMapping("/FindAll")
+    public ResponseEntity<List<Customer>> findAll()
+    {
+        List<Customer> customerList = customerServiceImplementation.findAll();
 
-
-
+        return ResponseEntity.ok(customerList);
+    }
 
     @PostMapping("/GetById")
-    public ResponseEntity getById(@RequestBody Integer id)
+    public ResponseEntity<Object> getById(@RequestBody Integer id)
     {
         Customer customer = customerServiceImplementation.findFirstById(id);
-        return ResponseEntity.status(HttpStatus.OK).body(customer);
+        if(customer != null)
+            return ResponseEntity.status(HttpStatus.OK).body(customer);
+        else
+            return ResponseEntity.badRequest().body("Invalid");
     }
     @PostMapping("/Print")
-    public void printMessage(@RequestBody ObiectNou data)
+    public void printMessage(@RequestBody CustomerItem data)
     {
         System.out.println(data);
+    }
+
+    @PostMapping("/DeleteById")
+    public void deleteCustomerById(@RequestBody String id)
+    {
+        customerServiceImplementation.deleteById(Integer.valueOf(id));
+    }
+
+    @PostMapping("/Update")
+    public void updateCustomer(@RequestBody Customer customer)
+    {
+        customerServiceImplementation.update(customer);
+    }
+
+    @PostMapping("/UpdateBarOrders")
+    public void updateBarOrders(@RequestBody BarOrderCustomer barOrderCustomer)
+    {
+        Integer barOrderId = barOrderCustomer.getBarOrderId();
+        Integer customerId = barOrderCustomer.getCustomerId();
+        customerServiceImplementation.updateBarOrder(barOrderId, customerId);
+    }
+
+    @PostMapping("/Delete")
+    public void deleteCustomer(@RequestBody Customer customer)
+    {
+        customerServiceImplementation.delete(customer);
     }
 
     @PostMapping("/Insert")
@@ -70,4 +101,5 @@ public class CustomerController {
             return ResponseEntity.badRequest().body(string);
         }
     }
+
 }

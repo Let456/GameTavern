@@ -12,4 +12,7 @@ public interface PcRepository extends CrudRepository<Pc, Integer> {
 
     Pc findFirstById(Integer id);
     List<Pc> findAllByPcType(Integer type);
+
+    List<Pc> findAll();
+    void deleteById(Integer id);
 }

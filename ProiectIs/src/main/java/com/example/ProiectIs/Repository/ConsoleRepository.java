@@ -10,5 +10,9 @@ import java.util.List;
 public interface ConsoleRepository extends CrudRepository<Console, Integer> {
 
     Console findFirstById(Integer id);
+
+    void deleteById(Integer id);
+
+    List<Console> findAll();
     List<Console> findAllByConsoleType(Integer type);
 }

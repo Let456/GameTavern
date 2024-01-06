@@ -110,3 +110,15 @@ export const labelStyle: React.CSSProperties = {
 export const inputTextStyle: React.CSSProperties = {
   color: '#8B4513'
 }
+
+export const listStyle: React.CSSProperties = {
+    width: '100%',
+    maxWidth: 360,
+    backgroundColor: lightBrown,  
+};
+  
+export const listContainer: CSSProperties = {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  };

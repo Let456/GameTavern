@@ -7,6 +7,7 @@ import BarMenu from "../Pages/BarMenu";
 import RentConsole from "../Pages/RentConsole";
 import AdminHome from "../Pages/AdminHome";
 import ManageCustomer from "../Pages/ManageCustomer";
+import SeeOrders from "../Pages/SeeOrders";
 
 
 const routes: RouteObject[] = [
@@ -48,6 +49,11 @@ const routes: RouteObject[] = [
     {
         path: "/ManageCustomer",
         element: <ManageCustomer />
+    },
+
+    {
+        path: "/SeeOrders",
+        element: <SeeOrders />
     }
 
 ];

@@ -11,4 +11,6 @@ public interface BarOrderRepository extends CrudRepository<BarOrder, Integer> {
 
     BarOrder findFirstById(Integer id);
 
+    void deleteById(Integer id);
+
 }

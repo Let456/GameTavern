@@ -8,6 +8,8 @@ public interface BarOrderService {
     BarOrder findFirstById(Integer id);
     public void insert(BarOrder order);
 
+    public void update(BarOrder barOrder);
+
     public void delete(BarOrder order);
 
     public void deleteById(Integer id);

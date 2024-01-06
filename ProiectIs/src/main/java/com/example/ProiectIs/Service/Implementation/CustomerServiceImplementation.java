@@ -1,5 +1,7 @@
 package com.example.ProiectIs.Service.Implementation;
 
+import com.example.ProiectIs.Model.BarOrder;
+import com.example.ProiectIs.Model.Console;
 import com.example.ProiectIs.Model.Customer;
 import com.example.ProiectIs.Repository.CustomerRepository;
 import com.example.ProiectIs.Service.CustomerService;
@@ -8,12 +10,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class CustomerServiceImplementation implements CustomerService {
 
     @Autowired
     private CustomerRepository customerRepository;
+    @Autowired
+    private BarOrderServiceImplementation barOrderServiceImplementation;
+
     @Override
     public Customer findFirstById(Integer id) {
         return customerRepository.findFirstById(id);
@@ -22,6 +29,11 @@ public class CustomerServiceImplementation implements CustomerService {
     @Override
     public Customer findByEmail(String email) {
         return customerRepository.findFirstByEmail(email);
+    }
+
+    @Override
+    public List<Customer> findAll() {
+        return customerRepository.findAll();
     }
 
     @Override
@@ -43,6 +55,21 @@ public class CustomerServiceImplementation implements CustomerService {
             return ("Account Created");
         }
 
+    }
+    @Override
+    public void update(Customer customer)
+    {
+        customerRepository.save(customer);
+    }
+
+    @Override
+    public void updateBarOrder(Integer id, Integer customerId) {
+        BarOrder barOrder = barOrderServiceImplementation.findFirstById(id);
+        Customer customer = findFirstById(customerId);
+        List<BarOrder> barOrderList = customer.getBarOrderList();
+        barOrderList.remove(barOrder);
+        customer.setBarOrderList(barOrderList);
+        update(customer);
     }
 
     @Override

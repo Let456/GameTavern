@@ -32,4 +32,13 @@ public class BarOrderController {
         System.out.println(order);
     }
 
+    @PostMapping("/DeleteById")
+    public ResponseEntity<String> deleteBarOrderById(@RequestBody Integer id)
+    {
+        System.out.println(id);
+        barOrderServiceImplementation.deleteById(id);
+
+        return  ResponseEntity.ok().body("BarOrder Deleted Succesfully");
+    }
+
 }

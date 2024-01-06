@@ -12,5 +12,10 @@ public interface CustomerRepository extends CrudRepository<Customer,Integer> {
     Customer findFirstById(Integer id);
 
     Customer findFirstByEmail(String email);
+
+    void delete(Customer customer);
+
+    void deleteById(Integer id);
+    List<Customer> findAll();
     List<Customer> findAllByAge(Integer age);
 }

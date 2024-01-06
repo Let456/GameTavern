@@ -21,6 +21,9 @@ public class Customer {
     private String email;
 
     private Integer admin;
+
+    private Integer wage;
+
     @OneToMany
     private List<BarOrder> barOrderList;
     @OneToMany
